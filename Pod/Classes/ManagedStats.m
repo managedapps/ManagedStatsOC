@@ -10,10 +10,21 @@
 #import "AFNetworking.h"
 
 @implementation ManagedStats {
+    
 }
+
+- (id)initWithAppKey:(NSString*)appKey {
+    
+    _appKey = appKey;
+    
+    return self;
+    
+}
+
 
 - (void)recordRun {
     NSLog(@"MANAGEDAPPS.CO -> Recording a Run!");
+    NSLog(@"MANAGEDAPPS.CO -> appkey is %@", _appKey);
 }
 
 @end
