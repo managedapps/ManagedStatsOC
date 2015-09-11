@@ -7,6 +7,7 @@
 //
 
 #import "MAViewController.h"
+#import "ManagedStats.h"
 
 @interface MAViewController ()
 
@@ -18,6 +19,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    ManagedStats* ms = [ManagedStats alloc];
+    [ms recordRun];
+    
 }
 
 - (void)didReceiveMemoryWarning
