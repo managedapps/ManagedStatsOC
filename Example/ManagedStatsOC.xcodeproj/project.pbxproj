@@ -23,6 +23,7 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A11E7A8A49A6127BF5D65D6C /* Pods_ManagedStatsOC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD2216765D5A48AA434CF4 /* Pods_ManagedStatsOC_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AFBEDC61A4B207EB73FF7199 /* Pods_ManagedStatsOC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C1856419DF3495A8247A48 /* Pods_ManagedStatsOC_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C1B739F11BA782AD001BE171 /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = C1B739F01BA782AD001BE171 /* disclaimer.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A8A6C0C1E8A9D797CF35FA18 /* Pods-ManagedStatsOC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManagedStatsOC_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManagedStatsOC_Example/Pods-ManagedStatsOC_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C1B739F01BA782AD001BE171 /* disclaimer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disclaimer.html; sourceTree = "<group>"; };
 		E83D3C9783287ACA160B8611 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F03B58E49126A56EB35806DC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FD0CE14988F3EE2BD43D94AD /* Pods-ManagedStatsOC_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManagedStatsOC_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManagedStatsOC_Tests/Pods-ManagedStatsOC_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				6003F5A6195388D20070C39A /* MAViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				C1B739F01BA782AD001BE171 /* disclaimer.html */,
 			);
 			name = "Example for ManagedStatsOC";
 			path = ManagedStatsOC;
@@ -279,6 +282,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				C1B739F11BA782AD001BE171 /* disclaimer.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

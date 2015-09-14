@@ -8,6 +8,7 @@
 
 #import "MAViewController.h"
 #import "ManagedStats.h"
+#import "DisclaimerVC.h"
 
 @interface MAViewController ()
 
@@ -23,6 +24,16 @@
     ManagedStats* ms = [ManagedStats alloc];
     [ms recordRun];
     
+}
+
+- (IBAction)showDisclaimer:(id)sender {
+
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"Frameworks/ManagedStatsOC" ofType:@"framework"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    DisclaimerVC *dvc = [[DisclaimerVC alloc]
+                         initWithNibName:@"DisclaimerVC" bundle:bundle];
+    [self presentViewController:dvc animated:YES completion:nil];
+
 }
 
 - (void)didReceiveMemoryWarning
