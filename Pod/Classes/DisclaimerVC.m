@@ -11,10 +11,16 @@
 @interface DisclaimerVC ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) NSDictionary *config;
 
 @end
 
 @implementation DisclaimerVC
+
+- (void)config:(NSDictionary*)config
+{
+    _config = config;
+}
 
 - (NSString *)htmlFromBodyString:(NSString *)htmlBodyString
                         textFont:(UIFont *)font
