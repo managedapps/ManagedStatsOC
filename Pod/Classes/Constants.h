@@ -12,3 +12,4 @@
 #define kNSUDKeyFirstRun        "first_run"
 #define kDisclaimerConfigButton "disclaimer_button"
 #define kDisclaimerConfigButtonTitle "disclaimer_button_title"
+#define kDisclaimerConfigButtonColor "disclaimer_button_color"

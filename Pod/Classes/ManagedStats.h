@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef Pods_ManagedStats_h
-#define Pods_ManagedStats_h
-
 @interface ManagedStats : NSObject
 
 @property (nonatomic, strong) NSString *appKey;
@@ -19,5 +16,3 @@
 - (void)recordRun;
 
 @end
-
-#endif

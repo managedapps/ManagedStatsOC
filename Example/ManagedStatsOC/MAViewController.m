@@ -34,7 +34,9 @@
     NSMutableDictionary *config = [[NSMutableDictionary alloc] init];
     UIImage *buttonImage = [UIImage imageNamed:@"button-green-normal1"];
     [config setObject:buttonImage forKey:@kDisclaimerConfigButton];
-    [dvc config:config];
+    [config setObject:@"ACCEPT THIS" forKey:@kDisclaimerConfigButtonTitle];
+    [config setObject:[UIColor whiteColor] forKey:@kDisclaimerConfigButtonColor];
+    [dvc configure:config];
     [self presentViewController:dvc animated:YES completion:nil];
 
 }

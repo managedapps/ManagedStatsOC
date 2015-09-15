@@ -7,17 +7,19 @@
 //
 
 #import "DisclaimerVC.h"
+#import "Constants.h"
 
 @interface DisclaimerVC ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) NSDictionary *config;
+@property (weak, nonatomic) IBOutlet UIButton *centerButton;
 
 @end
 
 @implementation DisclaimerVC
 
-- (void)config:(NSDictionary*)config
+- (void)configure:(NSDictionary*)config
 {
     _config = config;
 }
@@ -75,6 +77,26 @@
                                               textColor:[UIColor whiteColor]];
     
     [_webView loadHTMLString:htmlColorString baseURL:nil];
+    
+    if (_config != nil) {
+        
+        UIColor *color = [_config objectForKey:@kDisclaimerConfigButtonColor];
+        UIImage *image = [_config objectForKey:@kDisclaimerConfigButton];
+        NSString *buttonTitle = [_config objectForKey:@kDisclaimerConfigButtonTitle];
+       
+        if (image != nil) {
+            [_centerButton setBackgroundImage:image forState:UIControlStateNormal];
+        }
+        
+        if (buttonTitle != nil) {
+            [_centerButton setTitle:buttonTitle forState:UIControlStateNormal];
+        }
+        
+        if (color != nil) {
+            [_centerButton setTitleColor:color forState:UIControlStateNormal];
+        }
+        
+    }
     
 }
 

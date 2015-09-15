@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DisclaimerVC">
             <connections>
+                <outlet property="centerButton" destination="rEf-ZJ-qJi" id="UFY-nr-LDx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="lpA-1N-Mo6" id="CBl-Pe-6zc"/>
             </connections>
