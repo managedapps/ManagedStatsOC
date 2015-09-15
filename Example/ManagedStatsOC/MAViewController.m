@@ -7,8 +7,7 @@
 //
 
 #import "MAViewController.h"
-#import "ManagedStats.h"
-#import "DisclaimerVC.h"
+#import "ManagedStatsOC.h"
 
 @interface MAViewController ()
 
@@ -32,6 +31,10 @@
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     DisclaimerVC *dvc = [[DisclaimerVC alloc]
                          initWithNibName:@"DisclaimerVC" bundle:bundle];
+    NSMutableDictionary *config = [[NSMutableDictionary alloc] init];
+    UIImage *buttonImage = [UIImage imageNamed:@"button-green-normal1"];
+    [config setObject:buttonImage forKey:kDisclaimerConfigButton];
+    [dev configure:config];
     [self presentViewController:dvc animated:YES completion:nil];
 
 }

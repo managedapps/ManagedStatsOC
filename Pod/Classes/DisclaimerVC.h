@@ -10,4 +10,6 @@
 
 @interface DisclaimerVC : UIViewController
 
+- (void)config:(NSDictionary*)config;
+
 @end
