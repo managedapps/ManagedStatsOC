@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ManagedStatsOC"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "A pod for building Apps by MangagedApps.co."
 
 # This description is used to generate tags and improve search results.
@@ -31,9 +31,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Pod/Classes/**/*'
   s.resources = ['Pod/Classes/DisclaimerVC.xib']
-  s.resource_bundles = {
-    'ManagedStatsOC' => ['Pod/Classes/*.xib']
-  }
+#  s.resource_bundles = {
+#    'ManagedStatsOC' => ['Pod/Classes/*.xib']
+#  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
