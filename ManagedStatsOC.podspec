@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ManagedStatsOC"
-  s.version          = "0.1.9"
+  s.version          = "0.1.10"
   s.summary          = "A pod for building Apps by MangagedApps.co."
 
 # This description is used to generate tags and improve search results.

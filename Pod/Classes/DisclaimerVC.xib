@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpA-1N-Mo6">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="66" width="600" height="434"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jah-Sn-Hgk">
@@ -71,8 +71,8 @@
                 <constraint firstAttribute="bottom" secondItem="jah-Sn-Hgk" secondAttribute="bottom" id="R5S-ui-B0a"/>
                 <constraint firstItem="MNd-hU-Dnk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V1b-5E-8jf"/>
                 <constraint firstItem="MNd-hU-Dnk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aru-gD-RGc"/>
-                <constraint firstAttribute="bottom" secondItem="lpA-1N-Mo6" secondAttribute="bottom" id="kti-e4-BwK"/>
-                <constraint firstItem="lpA-1N-Mo6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lWu-2i-8zN"/>
+                <constraint firstAttribute="bottom" secondItem="lpA-1N-Mo6" secondAttribute="bottom" constant="100" id="kti-e4-BwK"/>
+                <constraint firstItem="lpA-1N-Mo6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="lWu-2i-8zN"/>
             </constraints>
         </view>
     </objects>
