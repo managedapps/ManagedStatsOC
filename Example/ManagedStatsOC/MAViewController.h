@@ -7,7 +7,8 @@
 //
 
 @import UIKit;
+#import "ManagedStatsOC.h"
 
-@interface MAViewController : UIViewController
+@interface MAViewController : UIViewController <DisclaimerProtocol>
 
 @end

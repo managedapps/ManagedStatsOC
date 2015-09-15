@@ -109,6 +109,10 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    if (_delegate != nil) {
+        [_delegate accepted];
+    }
+    
 }
 
 @end

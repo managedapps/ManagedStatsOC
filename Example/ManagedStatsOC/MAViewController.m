@@ -7,7 +7,6 @@
 //
 
 #import "MAViewController.h"
-#import "ManagedStatsOC.h"
 
 @interface MAViewController ()
 
@@ -37,6 +36,7 @@
     [config setObject:@"ACCEPT THIS" forKey:@kDisclaimerConfigButtonTitle];
     [config setObject:[UIColor whiteColor] forKey:@kDisclaimerConfigButtonColor];
     [dvc configure:config];
+    dvc.delegate = self;
     [self presentViewController:dvc animated:YES completion:nil];
 
 }
@@ -46,5 +46,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - DisclaimerProtocol
+
+- (void)accepted {
+    
+    NSLog(@"accepted!");
+    
+}
+
 
 @end

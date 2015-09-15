@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DisclaimerProtocol <NSObject>
+
+@required
+
+- (void)accepted;
+
+@end
+
 @interface DisclaimerVC : UIViewController
+
+@property (weak, nonatomic) id <DisclaimerProtocol> delegate;
 
 - (void)configure:(NSDictionary*)config;
 
