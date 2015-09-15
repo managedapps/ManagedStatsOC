@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol DisclaimerProtocol <NSObject>
+@protocol DisclaimerProtocol <NSObject, UIWebViewDelegate>
 
 @required
 

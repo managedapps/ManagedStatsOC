@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) NSDictionary *config;
 @property (weak, nonatomic) IBOutlet UIButton *centerButton;
+@property (weak, nonatomic) IBOutlet UILabel *topLabel;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @end
 
@@ -71,6 +74,8 @@
     UIColor *textColor = nil;
     
     [_webView setOpaque:NO];
+    _webView.delegate = self;
+    
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"disclaimer" ofType:@"html"];
     
     NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
@@ -101,6 +106,7 @@
         UIColor *color = [_config objectForKey:@kDisclaimerConfigButtonColor];
         UIImage *image = [_config objectForKey:@kDisclaimerConfigButton];
         NSString *buttonTitle = [_config objectForKey:@kDisclaimerConfigButtonTitle];
+        NSString *topLabel = [_config objectForKey:@kDisclaimerConfigTopLabel];
        
         if (image != nil) {
             [_centerButton setBackgroundImage:image forState:UIControlStateNormal];
@@ -112,6 +118,10 @@
         
         if (color != nil) {
             [_centerButton setTitleColor:color forState:UIControlStateNormal];
+        }
+        
+        if (topLabel != nil) {
+            _topLabel.text = topLabel;
         }
         
     }
@@ -131,6 +141,14 @@
         [_delegate accepted];
     }
     
+}
+
+- (BOOL)webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    if(inType != UIWebViewNavigationTypeOther) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
+    return YES;
 }
 
 @end

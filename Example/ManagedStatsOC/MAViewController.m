@@ -34,6 +34,7 @@
     UIImage *buttonImage = [UIImage imageNamed:@"button-green-normal1"];
     [config setObject:buttonImage forKey:@kDisclaimerConfigButton];
     [config setObject:@"ACCEPT THIS" forKey:@kDisclaimerConfigButtonTitle];
+    [config setObject:@"USER AGREEMENT" forKey:@kDisclaimerConfigTopLabel];
     [config setObject:[UIColor whiteColor] forKey:@kDisclaimerConfigButtonColor];
 
     [config setObject:[UIColor greenColor] forKey:@kDisclaimerConfigTextColor];
