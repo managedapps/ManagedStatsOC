@@ -13,3 +13,5 @@
 #define kDisclaimerConfigButton "disclaimer_button"
 #define kDisclaimerConfigButtonTitle "disclaimer_button_title"
 #define kDisclaimerConfigButtonColor "disclaimer_button_color"
+#define kDisclaimerConfigTextColor "disclaimer_text_color"
+#define kDisclaimerConfigTextFont "disclaimer_text_font"

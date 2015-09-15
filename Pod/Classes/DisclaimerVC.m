@@ -65,16 +65,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
+    UIFont *textFont = nil;
+    UIColor *textColor = nil;
     
     [_webView setOpaque:NO];
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"disclaimer" ofType:@"html"];
     
     NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+
+    if (_config != nil) {
     
+        textFont = [_config objectForKey:@kDisclaimerConfigTextFont];
+        textColor = [_config objectForKey:@kDisclaimerConfigTextColor];
+        
+        if (textFont == nil) {
+            textFont = [UIFont systemFontOfSize:20];
+        }
+        
+        if (textColor == nil) {
+            textColor = [UIColor whiteColor];
+        }
+        
+    }
+
     NSString *htmlColorString = [self htmlFromBodyString:htmlString
-                                               textFont:[UIFont systemFontOfSize:20]
-                                              textColor:[UIColor whiteColor]];
+                                               textFont:textFont
+                                              textColor:textColor];
     
     [_webView loadHTMLString:htmlColorString baseURL:nil];
     

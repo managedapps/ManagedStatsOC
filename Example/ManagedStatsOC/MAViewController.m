@@ -35,6 +35,10 @@
     [config setObject:buttonImage forKey:@kDisclaimerConfigButton];
     [config setObject:@"ACCEPT THIS" forKey:@kDisclaimerConfigButtonTitle];
     [config setObject:[UIColor whiteColor] forKey:@kDisclaimerConfigButtonColor];
+
+    [config setObject:[UIColor greenColor] forKey:@kDisclaimerConfigTextColor];
+    [config setObject:[UIFont systemFontOfSize:5] forKey:@kDisclaimerConfigTextFont];
+    
     [dvc configure:config];
     dvc.delegate = self;
     [self presentViewController:dvc animated:YES completion:nil];
