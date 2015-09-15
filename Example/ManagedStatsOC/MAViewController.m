@@ -33,8 +33,8 @@
                          initWithNibName:@"DisclaimerVC" bundle:bundle];
     NSMutableDictionary *config = [[NSMutableDictionary alloc] init];
     UIImage *buttonImage = [UIImage imageNamed:@"button-green-normal1"];
-    [config setObject:buttonImage forKey:kDisclaimerConfigButton];
-    [dev configure:config];
+    [config setObject:buttonImage forKey:@kDisclaimerConfigButton];
+    [dvc config:config];
     [self presentViewController:dvc animated:YES completion:nil];
 
 }
