@@ -20,7 +20,7 @@
                         textFont:(UIFont *)font
                        textColor:(UIColor *)textColor
 {
-    int numComponents = CGColorGetNumberOfComponents([textColor CGColor]);
+    size_t numComponents = CGColorGetNumberOfComponents([textColor CGColor]);
     
     NSAssert(numComponents == 4 || numComponents == 2, @"Unsupported color format");
     
