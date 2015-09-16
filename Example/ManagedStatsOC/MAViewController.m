@@ -19,7 +19,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"8yd8gN-8AtYach1hhbT8DA" apiKey:@"southstreet"];
+    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"DhaMufqfSc0pYswzoW_qUg" apiKey:@"KF4y0GeMVzIMMKMBJE6TpA"];
     [ms recordRun];
     
 }
@@ -39,7 +39,9 @@
 
     [config setObject:[UIColor greenColor] forKey:@kDisclaimerConfigTextColor];
     [config setObject:[UIFont systemFontOfSize:5] forKey:@kDisclaimerConfigTextFont];
-    
+    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigTopColor];
+    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigBottomColor];
+    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigStatusColor];
     [dvc configure:config];
     dvc.delegate = self;
     [self presentViewController:dvc animated:YES completion:nil];

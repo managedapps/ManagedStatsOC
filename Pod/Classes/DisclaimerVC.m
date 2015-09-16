@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIView *statusBar;
 
 @end
 
@@ -107,6 +108,9 @@
         UIImage *image = [_config objectForKey:@kDisclaimerConfigButton];
         NSString *buttonTitle = [_config objectForKey:@kDisclaimerConfigButtonTitle];
         NSString *topLabel = [_config objectForKey:@kDisclaimerConfigTopLabel];
+        UIColor *colorTop = [_config objectForKey:@kDisclaimerConfigTopColor];
+        UIColor *colorBottom = [_config objectForKey:@kDisclaimerConfigBottomColor];
+        UIColor *colorStatus = [_config objectForKey:@kDisclaimerConfigStatusColor];
        
         if (image != nil) {
             [_centerButton setBackgroundImage:image forState:UIControlStateNormal];
@@ -122,6 +126,18 @@
         
         if (topLabel != nil) {
             _topLabel.text = topLabel;
+        }
+        
+        if (colorTop != nil) {
+            [_topView setBackgroundColor:colorTop];
+        }
+        
+        if (colorBottom != nil) {
+            [_bottomView setBackgroundColor:colorBottom];
+        }
+        
+        if (colorStatus != nil) {
+            [_statusBar setBackgroundColor:colorStatus];
         }
         
     }

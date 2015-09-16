@@ -16,3 +16,6 @@
 #define kDisclaimerConfigTextColor "disclaimer_text_color"
 #define kDisclaimerConfigTextFont "disclaimer_text_font"
 #define kDisclaimerConfigTopLabel "disclaimer_top_label"
+#define kDisclaimerConfigTopColor "disclaimer_top_color"
+#define kDisclaimerConfigBottomColor "disclaimer_bottom_color"
+#define kDisclaimerConfigStatusColor "disclaimer_status_color"
