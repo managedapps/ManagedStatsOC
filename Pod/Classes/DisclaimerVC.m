@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIView *statusBar;
+@property (weak, nonatomic) IBOutlet UIImageView *background;
+
 
 @end
 
@@ -111,7 +113,12 @@
         UIColor *colorTop = [_config objectForKey:@kDisclaimerConfigTopColor];
         UIColor *colorBottom = [_config objectForKey:@kDisclaimerConfigBottomColor];
         UIColor *colorStatus = [_config objectForKey:@kDisclaimerConfigStatusColor];
-       
+        UIImage *imageBg = [_config objectForKey:@kDisclaimerConfigBackground];
+        
+        if (imageBg != nil) {
+            [_background setImage:imageBg];
+        }
+        
         if (image != nil) {
             [_centerButton setBackgroundImage:image forState:UIControlStateNormal];
         }

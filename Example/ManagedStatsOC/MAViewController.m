@@ -39,9 +39,14 @@
 
     [config setObject:[UIColor greenColor] forKey:@kDisclaimerConfigTextColor];
     [config setObject:[UIFont systemFontOfSize:5] forKey:@kDisclaimerConfigTextFont];
-    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigTopColor];
-    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigBottomColor];
-    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigStatusColor];
+    
+    UIImage *background = [UIImage imageNamed:@"disclaimer-background"];
+    [config setObject:background forKey:@kDisclaimerConfigBackground];
+
+    
+//    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigTopColor];
+//    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigBottomColor];
+//    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigStatusColor];
     [dvc configure:config];
     dvc.delegate = self;
     [self presentViewController:dvc animated:YES completion:nil];

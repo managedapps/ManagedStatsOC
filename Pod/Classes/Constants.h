@@ -19,3 +19,4 @@
 #define kDisclaimerConfigTopColor "disclaimer_top_color"
 #define kDisclaimerConfigBottomColor "disclaimer_bottom_color"
 #define kDisclaimerConfigStatusColor "disclaimer_status_color"
+#define kDisclaimerConfigBackground "disclaimer_background"
