@@ -11,8 +11,9 @@
 @interface ManagedStats : NSObject
 
 @property (nonatomic, strong) NSString *appKey;
+@property (nonatomic, strong) NSString *apiKey;
 
-- (id)initWithAppKey:(NSString*)appKey;
+- (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key;
 - (void)recordRun;
 
 @end

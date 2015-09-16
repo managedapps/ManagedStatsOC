@@ -19,7 +19,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"8yd8gN-8AtYach1hhbT8DA"];
+    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"8yd8gN-8AtYach1hhbT8DA" apiKey:@"southstreet"];
     [ms recordRun];
     
 }

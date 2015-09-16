@@ -14,14 +14,14 @@
     
 }
 
-- (id)initWithAppKey:(NSString*)appKey {
+- (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key {
     
     _appKey = appKey;
+    _apiKey = key;
     
     return self;
     
 }
-
 
 - (void)recordRun {
     
@@ -32,7 +32,8 @@
     
         NSLog(@"MANAGEDAPPS.CO -> Recording a Run!");
         NSLog(@"MANAGEDAPPS.CO -> appkey is %@", _appKey);
-        NSString *fullUrl = [NSString stringWithFormat:@kFirstRunURL, _appKey];
+        NSLog(@"MANAGEDAPPS.CO -> apikey is %@", _apiKey);
+        NSString *fullUrl = [NSString stringWithFormat:@kFirstRunURL, _appKey, _apiKey];
         NSLog(@"MANAGEDAPPS.CO -> fullUrl %@", fullUrl);
         NSURL *URL = [NSURL URLWithString:fullUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
