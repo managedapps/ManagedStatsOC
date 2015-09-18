@@ -36,13 +36,14 @@
     return shared;
 }
 
+/*
 - (void)registerDefaults {
     NSDictionary *defaultPreferences = @{UserDefaultsKey_PresentAccountSetupOverlay: @(YES)};
     [self.userDefaults registerDefaults:defaultPreferences];
     [self.userDefaults synchronize];
 }
-
-
+*/
+/*
 - (NSDictionary *)deviceInfo {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -64,5 +65,6 @@
     
     return dict;
 }
+*/
 
 @end

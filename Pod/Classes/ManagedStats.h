@@ -16,6 +16,6 @@
 
 - (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key;
 - (void)recordRun;
--(void)sendDeviceTokenToServer:(NSData *)deviceToken;
-
+- (void)sendDeviceTokenToServer:(NSData *)deviceToken;
+- (void)alertWithMessage:(NSString *)message;
 @end

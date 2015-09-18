@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4D4286F31BAB0C0C00AFD8E8 /* MSSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4286F21BAB0C0C00AFD8E8 /* MSSettingsManager.m */; };
-		4D4286F61BAB0DD000AFD8E8 /* MSApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4286F51BAB0DD000AFD8E8 /* MSApiClient.m */; };
 		4D4286F91BAB194800AFD8E8 /* MSDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4286F81BAB194800AFD8E8 /* MSDataManager.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -47,8 +46,6 @@
 		4855496C61068B9FED288401 /* Pods-ManagedStatsOC_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManagedStatsOC_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ManagedStatsOC_Tests/Pods-ManagedStatsOC_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D4286F11BAB0C0C00AFD8E8 /* MSSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSettingsManager.h; sourceTree = "<group>"; };
 		4D4286F21BAB0C0C00AFD8E8 /* MSSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSettingsManager.m; sourceTree = "<group>"; };
-		4D4286F41BAB0DD000AFD8E8 /* MSApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSApiClient.h; sourceTree = "<group>"; };
-		4D4286F51BAB0DD000AFD8E8 /* MSApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSApiClient.m; sourceTree = "<group>"; };
 		4D4286F71BAB194800AFD8E8 /* MSDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDataManager.h; sourceTree = "<group>"; };
 		4D4286F81BAB194800AFD8E8 /* MSDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDataManager.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* ManagedStatsOC_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManagedStatsOC_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,8 +108,6 @@
 				4D4286F21BAB0C0C00AFD8E8 /* MSSettingsManager.m */,
 				4D4286F71BAB194800AFD8E8 /* MSDataManager.h */,
 				4D4286F81BAB194800AFD8E8 /* MSDataManager.m */,
-				4D4286F41BAB0DD000AFD8E8 /* MSApiClient.h */,
-				4D4286F51BAB0DD000AFD8E8 /* MSApiClient.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -424,7 +419,6 @@
 				6003F5A7195388D20070C39A /* MAViewController.m in Sources */,
 				4D4286F31BAB0C0C00AFD8E8 /* MSSettingsManager.m in Sources */,
 				4D4286F91BAB194800AFD8E8 /* MSDataManager.m in Sources */,
-				4D4286F61BAB0DD000AFD8E8 /* MSApiClient.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

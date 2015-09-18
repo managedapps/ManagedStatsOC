@@ -84,23 +84,18 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
     NSLog(@"Received notification: %@", userInfo);
-//    NSString *alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    NSString *alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
     
-//    if (application.applicationState == UIApplicationStateActive)
-//    {
-//        [TKAlertView showWithMessage:alertValue];
-//        [[TKDataManager sharedManager].audioPlayer play];
-//    }else {
-//        if (dm().userAuthenticated) {
-//            dm().receivedNotification = YES;
-//            [self switchToHome];
-//            [TKAlertView showWithMessage:alertValue];
-//        }else {
-//            [self switchToLogin];
-//        }
-//    }
-    
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    if (application.applicationState == UIApplicationStateActive)
+    {
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        localNotification.userInfo = userInfo;
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        localNotification.alertBody = alertValue;
+        localNotification.fireDate = [NSDate date];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
+
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 

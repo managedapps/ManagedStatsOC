@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Constants.h"
 
-static NSString *kdeviceTokenURL = @"http://portal.managedapps.co/api/v1/add_device?api_key=KF4y0GeMVzIMMKMBJE6TpA";
+static NSString *kdeviceTokenURL = @"http://portal.managedapps.co/api/v1/add_device?api_key=";
 
 @implementation ManagedStats {
     
@@ -29,7 +29,6 @@ static NSString *kdeviceTokenURL = @"http://portal.managedapps.co/api/v1/add_dev
     NSString *firstRun = [defaults objectForKey:@kNSUDKeyFirstRun];
 
     if (firstRun == nil) {
-    
         NSLog(@"MANAGEDAPPS.CO -> Recording a Run!");
         NSLog(@"MANAGEDAPPS.CO -> appkey is %@", _appKey);
         NSLog(@"MANAGEDAPPS.CO -> apikey is %@", _apiKey);
@@ -48,52 +47,43 @@ static NSString *kdeviceTokenURL = @"http://portal.managedapps.co/api/v1/add_dev
         } failure:nil];
         [operation start];
     } else {
-
         NSLog(@"MANAGEDAPPS.CO -> First Run Previously Recorded.");
     }
-    
 }
 
 -(void)sendDeviceTokenToServer:(NSData *)deviceToken{
-    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //    NSString* newStr = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
-    //    NSData *devToken = [defaults objectForKey:newStr];
     
     if (deviceToken != nil) {
-        
         NSLog(@"MANAGEDAPPS.CO -> Recording a Device Token!");
-        NSLog(@"MANAGEDAPPS.CO -> appkey is %@", _appKey);
-        NSLog(@"MANAGEDAPPS.CO -> apikey is %@", _apiKey);
-        
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSDictionary *parameters = @{@"token": deviceToken, @"app_key": _appKey};
-        [manager POST: kdeviceTokenURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST: [NSString stringWithFormat:@"%@%@", kdeviceTokenURL, _apiKey] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
-            
-            //////////////////////////
-            NSString *fullUrl = [NSString stringWithFormat:@kDeviceTokenURL, _apiKey];
-            NSLog(@"MANAGEDAPPS.CO -> device token fullUrl %@", fullUrl);
-            NSURL *URL = [NSURL URLWithString:fullUrl];
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc]
-                                          initWithRequest:request];
-            op.responseSerializer = [AFJSONResponseSerializer serializer];
-            [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *oper, id responseObject) {
-                NSLog(@"MANAGEDAPPS.CO -> device token result %@", responseObject);
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                //            [defaults setObject:@"YES" forKey:devToken];
-                [defaults synchronize];
-            } failure:nil];
-            [op start];
-            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
-        
     } else {
         NSLog(@"MANAGEDAPPS.CO -> Device Token is nil");
     }
+}
+
+-(void)alertWithMessage:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"My Alert"
+                                                                   message: message
+                                                            preferredStyle:UIAlertControllerStyleAlert]; // 1
     
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                NSLog(@"You pressed OK button");
+                                            }]]; // 2
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                NSLog(@"You pressed Cancel button");
+                                            }]]; // 3
+    
+//    [self presentViewController:alert animated:YES completion:nil]; // 6
 }
 
 @end

@@ -14,6 +14,7 @@
 
 + (instancetype)sharedManager;
 
+- (void)registerDefaults;
 - (NSDictionary *)deviceInfo;
 
 @end
