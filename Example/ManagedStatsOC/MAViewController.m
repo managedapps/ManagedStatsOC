@@ -82,6 +82,32 @@
     [ms logout];
 }
 
+- (void)loginStatus:(BOOL)result{
+    
+}
+
+- (void)postStatus:(BOOL)result responseObject:(id)obj
+{
+    if (result == true) {
+        NSLog(@"success with post");
+    } else {
+        NSLog(@"failure with post");
+    }
+}
+
+
+- (IBAction)sendAlert:(id)sender {
+    ManagedStats* ms = [[ManagedStats alloc] init];
+    ms.delegate = self;
+    NSString* authToken = [ms getAuthToken];
+    NSLog(@"auth token is %@\n", authToken);
+    
+    NSString* url = [NSString stringWithFormat:@"https://epi-api.herokuapp.com/api/v1/emergency?api_key=%@", authToken];
+    
+    NSDictionary *parameters = @{@"email": @"something"};
+    [ms post:parameters urlString:url];
+}
+
 #pragma mark - DisclaimerProtocol
 
 - (void)accepted {

@@ -12,6 +12,7 @@
 
 static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_phone?api_key=";
 static NSString *kauthTokenURL = @"https://epi-api.herokuapp.com/api/v1/login";
+static NSString *ksignUpURL = @"https://epi-api.herokuapp.com/api/v1/users/new";
 static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_key=";
 
 @implementation ManagedStats {
@@ -109,13 +110,41 @@ static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_
 
 - (void)signup:(NSString*)email password:(NSString*)pass firstName:(UITextField*)first lastName:(NSString*)last phoneNumber:(NSString*)phone {
 
-    
-    //jackye
-    //call signup API
-    //return yes or no
-    //save auth token
-    //call delegate signupStatus
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"email": email, @"password": pass, @"fname": first, @"lname": last, @"phone_number": phone};
+    [manager POST: [NSString stringWithFormat:@"%@", ksignUpURL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"MANAGEDAPPS.CO ->signup successful");
+        NSData *authTok= responseObject[@"auth_token"];
+        NSLog(@"Auth Token from server = %@", authTok);
+        [self storeAuthTokenLocally:authTok];
+        if (self.delegate != nil) {
+            [self.delegate signupStatus:YES];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (self.delegate != nil) {
+            [self.delegate signupStatus:NO];
+        }
+    }];
 
+
+}
+
+- (void)post:(NSDictionary*)parameters urlString:(NSString*)url {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST: [NSString stringWithFormat:@"%@", url] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        NSLog(@"JSON: %@", responseObj);
+        NSLog(@"MANAGEDAPPS.CO ->post successful");
+        if (self.delegate != nil) {
+            [self.delegate postStatus:YES responseObject:responseObj];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (self.delegate != nil) {
+            [self.delegate postStatus:NO responseObject:nil];
+        }
+    }];
 }
 
 - (void)login:(NSString*)email password:(NSString*)pass {
@@ -136,6 +165,15 @@ static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_
             [self.delegate loginStatus:NO];
         }
     }];
+}
+
+- (NSString*)getAuthToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *authTok = nil;
+    if (defaults != nil) {
+        authTok = [defaults objectForKey: @"authToken"];
+    }
+    return authTok;
 }
 
 - (void)sendDeviceToken {

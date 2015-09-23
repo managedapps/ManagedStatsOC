@@ -10,11 +10,12 @@
 
 @protocol ManagedStatsProtocol <NSObject, UIWebViewDelegate>
 
-@required
+@optional
 
 - (void)loginStatus:(BOOL)result;
 - (void)signupStatus:(BOOL)result;
 - (void)deviceTokenSendStatus:(BOOL)result;
+- (void)postStatus:(BOOL)result responseObject:(id)obj;
 
 @end
 
@@ -29,8 +30,10 @@
 - (void)storeDeviceTokenLocally:(NSData *)deviceToken;
 - (void)login:(NSString*)email password:(NSString*)pass;
 - (void)signup:(NSString*)email password:(NSString*)pass firstName:(NSString*)first lastName:(NSString*)last phoneNumber:(NSString*)phone;
+- (void)post:(NSDictionary*)parameters urlString:(NSString*)url;
 - (void)logout;
 - (BOOL)userHasAuthToken;
+- (NSString*)getAuthToken;
 - (void)sendDeviceToken;
 - (void)alertWithMessage:(NSString *)message;
 

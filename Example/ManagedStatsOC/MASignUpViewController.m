@@ -33,7 +33,8 @@
 - (IBAction)signupBtnTapped:(UIButton *)sender {
     
     ManagedStats* ms = [[ManagedStats alloc] init];
-    [ms signup:@"userEmail" password:@"password" firstName:@"firstName" lastName:@"lastName" phoneNumber: @"phoneNumber"];
+    NSString* email = self.userEmail.text;
+    [ms signup:email password:@"password" firstName:@"firstName" lastName:@"lastName" phoneNumber: @"phoneNumber"];
     ms.delegate = self;
 }
 
@@ -42,11 +43,23 @@
 }
 
 - (void)signupStatus:(BOOL)result{
-    
+    NSLog(@"signup result");
+    if (result == YES) {
+        ManagedStats* ms = [[ManagedStats alloc] init];
+       [ms sendDeviceToken];
+        NSLog(@"signup success");
+    } else {
+        NSLog(@"signup failed");
+    }
 }
 
 - (void)deviceTokenSendStatus:(BOOL)result{
-    
+    NSLog(@"deviceTokenSendStatus result");
+    if (result == YES) {
+        NSLog(@"deviceTokenSendStatus success");
+    } else {
+        NSLog(@"deviceTokenSendStatus failed");
+    }
 }
 
 /*
