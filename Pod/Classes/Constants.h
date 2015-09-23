@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #define kFirstRunURL            "http://portal.managedapps.co/api/v1/apps/%@/first_run?api_key=%@"
+//#define kdeviceTokenURL            "https://epi-api.herokuapp.com/api/v1/new_phone"
+
+
 #define kNSUDKeyFirstRun        "first_run"
 #define kNSUDKeyAcceptedDisclaimer      "accepted_disclaimer"
 #define kDeviceTokenURL            "http://portal.managedapps.co/api/v1/add_device?api_key=%@"
