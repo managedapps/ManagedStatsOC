@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "ManagedStatsOC.h"
 
 @interface MAAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface ManagedStats : NSObject
 
 @property (nonatomic, strong) NSString *appKey;
@@ -15,5 +16,6 @@
 
 - (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key;
 - (void)recordRun;
-
+- (void)sendDeviceTokenToServer:(NSData *)deviceToken;
+- (void)alertWithMessage:(NSString *)message;
 @end
