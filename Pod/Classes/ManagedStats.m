@@ -13,7 +13,7 @@
 static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_phone";
 
 @implementation ManagedStats {
-    
+  
 }
 
 - (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key {
@@ -51,7 +51,64 @@ static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_ph
     }
 }
 
--(void)sendDeviceTokenToServer:(NSData *)deviceToken{
+- (void)storeDeviceTokenLocally:(NSData *)deviceToken {
+    //jackye
+}
+
+- (void)storeAuthTokenLocally:(NSData *)deviceToken {
+    //jackye
+}
+
+- (BOOL)userHasAuthToken {
+    //jackye
+    //look in NSUserDefaults to see if there is an auth token
+    //return yes if this is the case
+}
+
+- (void)logout {
+    //jackye
+    //clear NSUserDefaults auth token
+}
+
+- (void)signup:(NSString*)email password:(NSString*)pass firstName:(NSString*)first lastName:(NSString*)last phoneNumber:(NSString*)phone {
+
+    
+    //jackye
+    //call signup API
+    //return yes or no
+    //save auth token
+    //call delegate signupStatus
+
+}
+
+- (void)login:(NSString*)email password:(NSString*)pass {
+    
+    //jackye
+
+    // Hit the network with email, pass, appkey, etc...
+    // Save the auth token with storeAuthTokenLocally
+    // Call the delegate and say it was a success
+    
+    if (self.delegate != nil) {
+        [self.delegate loginStatus:YES];
+    }
+    
+}
+
+- (void)sendDeviceToken {
+    
+    // jackye
+
+    // Hit the network with authToken, deviceToken, appkey, etc...
+    // Call sendDeviceTokenToServer
+
+    if (self.delegate != nil) {
+        [self.delegate deviceTokenSendStatus:YES];
+    }
+    
+}
+
+-(void)sendDeviceTokenToServer:(NSData *)deviceToken {
     
     if (deviceToken != nil) {
         NSLog(@"MANAGEDAPPS.CO -> Recording a Device Token!");

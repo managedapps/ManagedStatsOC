@@ -72,9 +72,8 @@
 {
     NSLog(@"device token : %@", deviceToken);
     ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"DhaMufqfSc0pYswzoW_qUg" apiKey:@"SdUktRvd-nen_KS3g_hhWA"];
-    [ms sendDeviceTokenToServer:deviceToken ];
+    [ms storeDeviceTokenLocally:deviceToken ];
 }
-
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
