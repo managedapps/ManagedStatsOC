@@ -97,7 +97,7 @@
     
     NSString* url = [NSString stringWithFormat:@"https://epi-api.herokuapp.com/api/v1/emergency?api_key=%@", authToken];
     
-    NSDictionary *parameters = @{@"email": @"something"};
+    NSDictionary *parameters = @{@"alert_type": @"red"};
     [ms post:parameters urlString:url];
 }
 

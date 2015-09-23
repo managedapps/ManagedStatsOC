@@ -33,7 +33,7 @@
 
 - (IBAction)LoginBtnTapped:(UIButton *)sender {
 
-    [self.ms login:@"test@test.com" password:@"12345678"];
+    [self.ms login:@"b@test.com" password:@"1234"];
 }
 
 - (void)loginStatus:(BOOL)result{

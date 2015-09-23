@@ -157,8 +157,18 @@ static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_
         NSData *authTok= responseObject[@"auth_token"];
         NSLog(@"Auth Token from server = %@", authTok);
         [self storeAuthTokenLocally:authTok];
-        if (self.delegate != nil) {
-            [self.delegate loginStatus:YES];
+        
+        NSNumber* statusCode= responseObject[@"status_code"];
+        NSLog(@"Status code from server = %@", statusCode);
+        
+        if( statusCode!=nil && statusCode.integerValue == 200) {
+            if (self.delegate != nil) {
+                [self.delegate loginStatus:YES];
+            }
+        } else {
+            if (self.delegate != nil) {
+                [self.delegate loginStatus:NO];
+            }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
