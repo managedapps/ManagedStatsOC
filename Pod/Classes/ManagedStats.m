@@ -119,56 +119,52 @@ static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_
 }
 
 - (void)login:(NSString*)email password:(NSString*)pass {
-    
-    //jackye
-    // Hit the network with email, pass, appkey, etc...
-    // Save the auth token with storeAuthTokenLocally
-    // Call the delegate and say it was a success
-    
-    if (self.delegate != nil) {
-        [self.delegate loginStatus:YES];
-      
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        NSDictionary *parameters = @{@"email": email, @"password": pass};
-        [manager POST: [NSString stringWithFormat:@"%@", kauthTokenURL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
-            NSLog(@"MANAGEDAPPS.CO ->login successful");
-            NSData *authTok= responseObject[@"auth_token"];
-            NSLog(@"Auth Token from server = %@", authTok);
-            [self storeAuthTokenLocally:authTok];
-            [self sendDeviceToken];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
-    } else {
-        NSLog(@"MANAGEDAPPS.CO -> login not successful");
-    }
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"email": email, @"password": pass};
+    [manager POST: [NSString stringWithFormat:@"%@", kauthTokenURL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"MANAGEDAPPS.CO ->login successful");
+        NSData *authTok= responseObject[@"auth_token"];
+        NSLog(@"Auth Token from server = %@", authTok);
+        [self storeAuthTokenLocally:authTok];
+        if (self.delegate != nil) {
+            [self.delegate loginStatus:YES];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (self.delegate != nil) {
+            [self.delegate loginStatus:NO];
+        }
+    }];
 }
 
 - (void)sendDeviceToken {
     
-    // jackye
-    // Hit the network with authToken, deviceToken, appkey, etc...
-    // Call sendDeviceTokenToServer
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *authTok = [defaults objectForKey: @"authToken"];
+    NSString* deviceToken = [defaults objectForKey: @"deviceToken"];
     
-    if (self.delegate != nil) {
-        [self.delegate deviceTokenSendStatus:YES];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString* deviceToken = [defaults objectForKey: @"deviceToken"];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        NSDictionary *parameters = @{@"token": deviceToken};
-        [manager POST: [NSString stringWithFormat:@"%@%@", kdeviceTokenURL, authTok] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
-            NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken successful");
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
-    } else {
-        NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken not successful");
+    if (deviceToken == nil || authTok == nil) {
+        if (self.delegate != nil) {
+            [self.delegate deviceTokenSendStatus:NO];
+        }
+        return;
     }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"token": deviceToken};
+    [manager POST: [NSString stringWithFormat:@"%@%@", kdeviceTokenURL, authTok] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken successful");
+        if (self.delegate != nil) {
+            [self.delegate deviceTokenSendStatus:YES];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (self.delegate != nil) {
+            [self.delegate deviceTokenSendStatus:NO];
+        }
+    }];
 }
 
 /*

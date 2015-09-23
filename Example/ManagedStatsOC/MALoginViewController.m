@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userEmail;
 @property (weak, nonatomic) IBOutlet UITextField *userPassword;
+@property (strong, nonatomic) ManagedStats *ms;
 @end
 
 @implementation MALoginViewController
@@ -20,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.ms = [[ManagedStats alloc] initWithAppKey:@"" apiKey:@""];
+    self.ms.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,20 +32,18 @@
 
 
 - (IBAction)LoginBtnTapped:(UIButton *)sender {
-    
-    
-//    if ([self.userEmail isEqual:@""] || [self.userPassword isEqual:@""] ) {
-//        NSLog(@"Add Alert");
-//    }else{
-        ManagedStats* ms = [[ManagedStats alloc] init];
-        [ms userHasAuthToken];
-        ms.delegate = self;
-        [ms login:@"test@test.com" password:@"12345678"];
-//    }
+
+    [self.ms login:@"test@test.com" password:@"12345678"];
 }
 
 - (void)loginStatus:(BOOL)result{
-    
+    NSLog(@"login result");
+    if (result == YES) {
+        [self.ms sendDeviceToken];
+        NSLog(@"login success");
+    } else {
+        NSLog(@"login failed");
+    }
 }
 
 - (void)signupStatus:(BOOL)result{
@@ -50,7 +51,12 @@
 }
 
 - (void)deviceTokenSendStatus:(BOOL)result{
-    
+    NSLog(@"deviceTokenSendStatus result");
+    if (result == YES) {
+        NSLog(@"deviceTokenSendStatus success");
+    } else {
+        NSLog(@"deviceTokenSendStatus failed");
+    }
 }
 
 /*
