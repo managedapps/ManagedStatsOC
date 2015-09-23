@@ -10,9 +10,18 @@
 
 @interface MAViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *userFirstName;
+@property (weak, nonatomic) IBOutlet UITextField *userLastName;
+@property (weak, nonatomic) IBOutlet UITextField *userEmail;
+@property (weak, nonatomic) IBOutlet UITextField *userPassword;
+
+
+
+
 @end
 
 @implementation MAViewController
+
 
 - (void)viewDidLoad
 {
@@ -61,6 +70,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+- (IBAction)sendDeviceTokenToServer:(UIButton *)sender {
+}
+
+- (IBAction)LogoutBtnTapped:(UIButton *)sender {
+    ManagedStats* ms = [[ManagedStats alloc] init];
+    [ms logout];
 }
 
 #pragma mark - DisclaimerProtocol

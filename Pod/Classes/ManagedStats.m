@@ -10,14 +10,15 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Constants.h"
 
-static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_phone";
+static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_phone?api_key=";
+static NSString *kauthTokenURL = @"https://epi-api.herokuapp.com/api/v1/login";
+static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_key=";
 
 @implementation ManagedStats {
   
 }
 
 - (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key {
-    
     _appKey = appKey;
     _apiKey = key;
     return self;
@@ -53,24 +54,60 @@ static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_ph
 
 - (void)storeDeviceTokenLocally:(NSData *)deviceToken {
     //jackye
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject: deviceToken forKey:@"deviceToken"];
+    
+    if ([defaults objectForKey: @"deviceToken"] != nil) {
+        NSLog(@"deviceToken saved in NSUserDefaults");
+    }else{
+        NSLog(@"deviceToken not saved in NSUserDefaults");
+    }
 }
 
-- (void)storeAuthTokenLocally:(NSData *)deviceToken {
+- (void)storeAuthTokenLocally:(NSData *)authToken {
     //jackye
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject: authToken forKey:@"authToken"];
+    if ([defaults objectForKey: @"authToken"] != nil) {
+        NSLog(@"authToken saved in NSUserDefaults");
+    }else{
+        NSLog(@"authToken not saved in NSUserDefaults");
+    }
 }
 
 - (BOOL)userHasAuthToken {
     //jackye
     //look in NSUserDefaults to see if there is an auth token
     //return yes if this is the case
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey: @"authToken"] != nil) {
+        NSLog(@"user has authToken");
+        return YES;
+    }else{
+        NSLog(@"user does not have authToken");
+        return NO;
+    }
 }
 
 - (void)logout {
     //jackye
-    //clear NSUserDefaults auth token
+ 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *authTok = [defaults objectForKey: @"authToken"];
+        
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"%@%@", klogoutURL,authTok] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"JSON: %@", responseObject);
+                NSLog(@"MANAGEDAPPS.CO ->logout successful");
+                [defaults removeObjectForKey:@"authToken"];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
 }
 
-- (void)signup:(NSString*)email password:(NSString*)pass firstName:(NSString*)first lastName:(NSString*)last phoneNumber:(NSString*)phone {
+- (void)signup:(NSString*)email password:(NSString*)pass firstName:(UITextField*)first lastName:(NSString*)last phoneNumber:(NSString*)phone {
 
     
     //jackye
@@ -84,30 +121,57 @@ static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_ph
 - (void)login:(NSString*)email password:(NSString*)pass {
     
     //jackye
-
     // Hit the network with email, pass, appkey, etc...
     // Save the auth token with storeAuthTokenLocally
     // Call the delegate and say it was a success
     
     if (self.delegate != nil) {
         [self.delegate loginStatus:YES];
+      
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"email": email, @"password": pass};
+        [manager POST: [NSString stringWithFormat:@"%@", kauthTokenURL] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            NSLog(@"MANAGEDAPPS.CO ->login successful");
+            NSData *authTok= responseObject[@"auth_token"];
+            NSLog(@"Auth Token from server = %@", authTok);
+            [self storeAuthTokenLocally:authTok];
+            [self sendDeviceToken];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    } else {
+        NSLog(@"MANAGEDAPPS.CO -> login not successful");
     }
-    
 }
 
 - (void)sendDeviceToken {
     
     // jackye
-
     // Hit the network with authToken, deviceToken, appkey, etc...
     // Call sendDeviceTokenToServer
-
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *authTok = [defaults objectForKey: @"authToken"];
+    
     if (self.delegate != nil) {
         [self.delegate deviceTokenSendStatus:YES];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString* deviceToken = [defaults objectForKey: @"deviceToken"];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"token": deviceToken};
+        [manager POST: [NSString stringWithFormat:@"%@%@", kdeviceTokenURL, authTok] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken successful");
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    } else {
+        NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken not successful");
     }
-    
 }
 
+/*
 -(void)sendDeviceTokenToServer:(NSData *)deviceToken {
     
     if (deviceToken != nil) {
@@ -123,6 +187,7 @@ static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_ph
         NSLog(@"MANAGEDAPPS.CO -> Device Token is nil");
     }
 }
+ */
 
 -(void)alertWithMessage:(NSString *)message{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"My Alert"
