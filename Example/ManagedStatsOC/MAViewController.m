@@ -7,6 +7,7 @@
 //
 
 #import "MAViewController.h"
+#import "Constants.h"
 
 @interface MAViewController ()
 
@@ -14,9 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *userLastName;
 @property (weak, nonatomic) IBOutlet UITextField *userEmail;
 @property (weak, nonatomic) IBOutlet UITextField *userPassword;
-
-
-
 
 @end
 
@@ -26,15 +24,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"DhaMufqfSc0pYswzoW_qUg" apiKey:@"SdUktRvd-nen_KS3g_hhWA"];
+    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@kAppKey apiKey:@kApiKey];
     [ms recordRun];
-    
 }
 
-- (IBAction)showDisclaimer:(id)sender {
-
+- (IBAction)showDisclaimer:(id)sender
+{
     if ([DisclaimerVC shouldShowDisclaimer] == NO) {
         return;
     }
@@ -56,14 +53,9 @@
     UIImage *background = [UIImage imageNamed:@"disclaimer-background"];
     [config setObject:background forKey:@kDisclaimerConfigBackground];
 
-    
-//    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigTopColor];
-//    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigBottomColor];
-//    [config setObject:[UIColor blackColor] forKey:@kDisclaimerConfigStatusColor];
     [dvc configure:config];
     dvc.delegate = self;
     [self presentViewController:dvc animated:YES completion:nil];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,17 +64,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-- (IBAction)sendDeviceTokenToServer:(UIButton *)sender {
+- (IBAction)sendDeviceTokenToServer:(UIButton *)sender
+{
 }
 
-- (IBAction)LogoutBtnTapped:(UIButton *)sender {
+- (IBAction)LogoutBtnTapped:(UIButton *)sender
+{
     ManagedStats* ms = [[ManagedStats alloc] init];
     [ms logout];
 }
 
-- (void)loginStatus:(BOOL)result{
+- (void)loginStatus:(BOOL)result
+{
     
 }
 
@@ -95,8 +88,8 @@
     }
 }
 
-
-- (IBAction)sendAlert:(id)sender {
+- (IBAction)sendAlert:(id)sender
+{
     ManagedStats* ms = [[ManagedStats alloc] init];
     ms.delegate = self;
     NSString* authToken = [ms getAuthToken];
@@ -115,6 +108,5 @@
     NSLog(@"accepted!");
     
 }
-
 
 @end

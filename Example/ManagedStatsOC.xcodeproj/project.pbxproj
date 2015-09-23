@@ -75,6 +75,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A8A6C0C1E8A9D797CF35FA18 /* Pods-ManagedStatsOC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManagedStatsOC_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManagedStatsOC_Example/Pods-ManagedStatsOC_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C19134F81BB349EB00038FF4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C1B739F01BA782AD001BE171 /* disclaimer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disclaimer.html; sourceTree = "<group>"; };
 		E83D3C9783287ACA160B8611 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F03B58E49126A56EB35806DC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 			children = (
 				6003F59C195388D20070C39A /* MAAppDelegate.h */,
 				6003F59D195388D20070C39A /* MAAppDelegate.m */,
+				C19134F81BB349EB00038FF4 /* Constants.h */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* MAViewController.h */,
 				6003F5A6195388D20070C39A /* MAViewController.m */,

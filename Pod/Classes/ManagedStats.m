@@ -97,7 +97,8 @@ static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_
  
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *authTok = [defaults objectForKey: @"authToken"];
-        
+    NSLog(@"logging out %@", authTok);
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:[NSString stringWithFormat:@"%@%@", klogoutURL,authTok] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
@@ -188,6 +189,7 @@ static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_
         }
         return;
     }
+    NSLog(@"sending token: device %@ auth %@", deviceToken, authTok);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"token": deviceToken};

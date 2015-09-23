@@ -8,6 +8,7 @@
 
 #import "MAAppDelegate.h"
 #import "MSSettingsManager.h"
+#import "Constants.h"
 
 @implementation MAAppDelegate
 
@@ -62,27 +63,27 @@
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
     //handle the actions
-    if ([identifier isEqualToString:@"declineAction"]){
+    if ([identifier isEqualToString:@"decline action"]){
     }
-    else if ([identifier isEqualToString:@"answerAction"]){
+    else if ([identifier isEqualToString:@"answer action"]){
     }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"device token : %@", deviceToken);
-    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@"DhaMufqfSc0pYswzoW_qUg" apiKey:@"SdUktRvd-nen_KS3g_hhWA"];
+    NSLog(@"device token sent to app : %@", deviceToken);
+    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@kAppKey apiKey:@kApiKey];
     [ms storeDeviceTokenLocally:deviceToken ];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
-    NSLog(@"Failed to get token, error: %@", error);
+    NSLog(@"failed to get token, error: %@", error);
 }
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
-    NSLog(@"Received notification: %@", userInfo);
+    NSLog(@"received notification: %@", userInfo);
     NSString *alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
     
     if (application.applicationState == UIApplicationStateActive)
@@ -97,6 +98,5 @@
 
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
-
 
 @end
