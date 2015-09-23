@@ -10,6 +10,7 @@
 
 #define kFirstRunURL            "http://portal.managedapps.co/api/v1/apps/%@/first_run?api_key=%@"
 #define kNSUDKeyFirstRun        "first_run"
+#define kNSUDKeyAcceptedDisclaimer      "accepted_disclaimer"
 #define kDeviceTokenURL            "http://portal.managedapps.co/api/v1/add_device?api_key=%@"
 #define kDisclaimerConfigButton "disclaimer_button"
 #define kDisclaimerConfigButtonTitle "disclaimer_button_title"

@@ -26,6 +26,10 @@
 
 - (IBAction)showDisclaimer:(id)sender {
 
+    if ([DisclaimerVC shouldShowDisclaimer] == NO) {
+        return;
+    }
+    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"Frameworks/ManagedStatsOC" ofType:@"framework"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     DisclaimerVC *dvc = [[DisclaimerVC alloc]

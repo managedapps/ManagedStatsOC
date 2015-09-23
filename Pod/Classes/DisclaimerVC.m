@@ -161,6 +161,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     if (_delegate != nil) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"YES" forKey:@kNSUDKeyAcceptedDisclaimer];
+        [defaults synchronize];
         [_delegate accepted];
     }
     
@@ -172,6 +175,19 @@
         return NO;
     }
     return YES;
+}
+
++ (bool)shouldShowDisclaimer {
+    
+    bool shouldShow = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *hasShown = [defaults objectForKey:@kNSUDKeyAcceptedDisclaimer];
+        
+    if (hasShown != nil) {
+        NSLog(@"MANAGEDAPPS.CO -> Disclaimer previously shown.");
+        shouldShow = NO;
+    }
+    return shouldShow;
 }
 
 @end

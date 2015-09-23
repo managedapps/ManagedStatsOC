@@ -22,4 +22,6 @@
 
 - (void)configure:(NSDictionary*)config;
 
++ (bool)shouldShowDisclaimer;
+
 @end
