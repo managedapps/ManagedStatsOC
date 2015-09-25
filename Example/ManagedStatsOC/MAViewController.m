@@ -102,7 +102,7 @@
     NSString* authToken = [ms getAuthToken];
     NSLog(@"auth token is %@\n", authToken);
     
-    NSString* url = [NSString stringWithFormat:@"https://epi-api.herokuapp.com/api/v1/emergency?api_key=%@", authToken];
+    NSString* url = [NSString stringWithFormat:@"https://epi-dev.herokuapp.com/api/v1/emergency?api_key=%@", authToken];
     
     NSDictionary *parameters = @{@"email": @"something"};
     [ms post:parameters urlString:url];
