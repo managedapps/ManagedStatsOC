@@ -10,10 +10,10 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Constants.h"
 
-static NSString *kdeviceTokenURL = @"https://epi-api.herokuapp.com/api/v1/new_phone?api_key=";
-static NSString *kauthTokenURL = @"https://epi-api.herokuapp.com/api/v1/login";
-static NSString *ksignUpURL = @"https://epi-api.herokuapp.com/api/v1/users/new";
-static NSString *klogoutURL = @"https://epi-api.herokuapp.com/api/v1/logout?api_key=";
+static NSString *kdeviceTokenURL = @"https://epi-dev.herokuapp.com/api/v1/new_phone?api_key=";
+static NSString *kauthTokenURL = @"https://epi-dev.herokuapp.com/api/v1/login";
+static NSString *ksignUpURL = @"https://epi-dev.herokuapp.com/api/v1/users/new";
+static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_key=";
 
 @implementation ManagedStats {
   
