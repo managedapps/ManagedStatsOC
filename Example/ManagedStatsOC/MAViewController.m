@@ -20,15 +20,39 @@
 
 @implementation MAViewController
 
+- (void) customInit
+{
+    
+    self.styleHideStatusBar = NO;
+    self.styleHideNavigationBar = YES;
+    self.styleCoaching = @"Coaching";
+    self.styleCoachingDelay = 2.0;
+    self.styleCoachingAlpha = 0.5;
+}
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
     ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@kAppKey apiKey:@kApiKey];
     [ms recordRun];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    
+    [super viewDidDisappear:animated];    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Actions
 
 - (IBAction)showDisclaimer:(id)sender
 {
@@ -46,22 +70,16 @@
     [config setObject:@"ACCEPT THIS" forKey:@kDisclaimerConfigButtonTitle];
     [config setObject:@"USER AGREEMENT" forKey:@kDisclaimerConfigTopLabel];
     [config setObject:[UIColor whiteColor] forKey:@kDisclaimerConfigButtonColor];
-
+    
     [config setObject:[UIColor greenColor] forKey:@kDisclaimerConfigTextColor];
     [config setObject:[UIFont systemFontOfSize:5] forKey:@kDisclaimerConfigTextFont];
     
     UIImage *background = [UIImage imageNamed:@"disclaimer-background"];
     [config setObject:background forKey:@kDisclaimerConfigBackground];
-
+    
     [dvc configure:config];
     dvc.delegate = self;
     [self presentViewController:dvc animated:YES completion:nil];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)sendDeviceTokenToServer:(UIButton *)sender
@@ -72,6 +90,11 @@
 {
     ManagedStats* ms = [[ManagedStats alloc] init];
     [ms logout];
+}
+
+- (IBAction)resetCoachMarks:(id)sender {
+    
+    [self resetCoach];
 }
 
 - (void)loginStatus:(BOOL)result

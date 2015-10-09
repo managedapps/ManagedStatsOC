@@ -9,3 +9,4 @@
 #import "ManagedStats.h"
 #import "DisclaimerVC.h"
 #import "Constants.h"
+#import "MSViewController.h"
