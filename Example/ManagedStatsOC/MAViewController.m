@@ -56,10 +56,10 @@
 
 - (IBAction)showDisclaimer:(id)sender
 {
+    
     if ([DisclaimerVC shouldShowDisclaimer] == NO) {
         return;
     }
-    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"Frameworks/ManagedStatsOC" ofType:@"framework"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     DisclaimerVC *dvc = [[DisclaimerVC alloc]
@@ -97,6 +97,11 @@
     [self resetCoach];
 }
 
+- (IBAction)showOtherCoach:(id)sender {
+    
+    [self showCoachImage:@"Coaching2"];
+}
+
 - (void)loginStatus:(BOOL)result
 {
     
@@ -104,6 +109,7 @@
 
 - (void)postStatus:(BOOL)result responseObject:(id)obj
 {
+    
     if (result == true) {
         NSLog(@"success with post");
     } else {

@@ -114,16 +114,26 @@
                                     <action selector="sendDeviceTokenToServer:" destination="whP-gf-Uak" eventType="touchUpInside" id="fDL-uc-4vL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6O-s9-4ww">
+                                <rect key="frame" x="411" y="173" width="40" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Other"/>
+                                <connections>
+                                    <action selector="showOtherCoach:" destination="whP-gf-Uak" eventType="touchUpInside" id="eyI-rW-jry"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9YR-SW-efq" firstAttribute="top" secondItem="QGu-5m-NXe" secondAttribute="bottom" constant="19" id="5p8-mW-Fkw"/>
+                            <constraint firstItem="r6O-s9-4ww" firstAttribute="leading" secondItem="giv-dl-Inp" secondAttribute="trailing" constant="11" id="6XW-8n-nXo"/>
                             <constraint firstItem="QGu-5m-NXe" firstAttribute="top" secondItem="tSh-4T-DIn" secondAttribute="bottom" constant="16" id="73y-7f-WcB"/>
                             <constraint firstItem="xCI-AE-ybA" firstAttribute="centerX" secondItem="9YR-SW-efq" secondAttribute="centerX" id="9ZA-XD-3sV"/>
                             <constraint firstItem="xCI-AE-ybA" firstAttribute="centerX" secondItem="9YR-SW-efq" secondAttribute="centerX" id="J2O-0z-QV6"/>
                             <constraint firstItem="QGu-5m-NXe" firstAttribute="top" secondItem="ScY-j1-f48" secondAttribute="bottom" constant="320" id="MmU-Ws-YPC"/>
                             <constraint firstItem="giv-dl-Inp" firstAttribute="top" secondItem="ScY-j1-f48" secondAttribute="bottom" constant="20" id="TZ5-ok-btj"/>
+                            <constraint firstItem="r6O-s9-4ww" firstAttribute="top" secondItem="giv-dl-Inp" secondAttribute="top" id="VSi-k5-S7c"/>
                             <constraint firstItem="tSh-4T-DIn" firstAttribute="top" secondItem="giv-dl-Inp" secondAttribute="bottom" constant="76" id="ZCa-jp-Ey8"/>
                             <constraint firstItem="tSh-4T-DIn" firstAttribute="centerX" secondItem="ScY-j1-f48" secondAttribute="centerX" id="aCp-B4-jF6"/>
                             <constraint firstItem="ScY-j1-f48" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="aIi-k5-LQP"/>

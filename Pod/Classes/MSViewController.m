@@ -76,49 +76,59 @@
         [self hideStatusBar];
     }
     
-    if (self.styleCoaching != nil && [self shouldShowCoach]) {
+    if (self.styleCoaching != nil) {
         
-        UIImage* coach = [UIImage imageNamed:self.styleCoaching];
-        
-        self.coachImageView = [[UIImageView alloc] initWithImage:coach];
-        self.coachImageView.frame = self.view.frame;
-        self.coachImageView.center = self.view.center;
-        self.coachImageView.alpha = 0.0;
-        [UIView animateWithDuration:self.styleCoachingDelay animations:^{
-            self.coachImageView.alpha = self.styleCoachingAlpha;
-        }];
-
-        self.coachImageView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapCoachGesture:)];
-        tapGesture.numberOfTapsRequired = 1;
-        [tapGesture setDelegate:self];
-        [self.coachImageView addGestureRecognizer:tapGesture];
-        [self.view addSubview:self.coachImageView];
+        [self showCoachImage:self.styleCoaching];
     }
+}
+
+- (void) showCoachImage: (NSString*)name
+{
+    
+    UIImage* coach = [UIImage imageNamed:name];
+    if (![self shouldShowCoach:name]) {
+        return;
+    }
+    self.coachImageView = [[UIImageView alloc] initWithImage:coach];
+    self.coachImageView.frame = self.view.frame;
+    self.coachImageView.center = self.view.center;
+    self.coachImageView.alpha = 0.0;
+    [UIView animateWithDuration:self.styleCoachingDelay animations:^{
+        self.coachImageView.alpha = self.styleCoachingAlpha;
+        
+        // Set in defaults.
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString* fullName = [NSString stringWithFormat:@"%@%@", @kNSUDKeyCoachMark, name];
+        [defaults setObject:@"YES" forKey:fullName];
+        [defaults synchronize];
+    }];
+    
+    self.coachImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapCoachGesture:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [tapGesture setDelegate:self];
+    [self.coachImageView addGestureRecognizer:tapGesture];
+    [self.view addSubview:self.coachImageView];
+   
 }
 
 - (void) tapCoachGesture: (id)sender
 {
+    
     [UIView animateWithDuration:self.styleCoachingDelay animations:^{
         self.coachImageView.alpha = 0;
     }];
     [self.coachImageView removeGestureRecognizer:sender];
     [self.coachImageView removeFromSuperview];
     self.coachImageView = nil;
-    
-    // Set in defaults.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString* fullName = [NSString stringWithFormat:@"%@%@", @kNSUDKeyCoachMark, self.styleCoaching];
-    [defaults setObject:@"YES" forKey:fullName];
-    [defaults synchronize];
 }
 
 
-- (bool)shouldShowCoach {
+- (bool)shouldShowCoach:(NSString*)name {
     
     bool shouldShow = YES;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString* fullName = [NSString stringWithFormat:@"%@%@", @kNSUDKeyCoachMark, self.styleCoaching];
+    NSString* fullName = [NSString stringWithFormat:@"%@%@", @kNSUDKeyCoachMark, name];
     NSString *hasShown = [defaults objectForKey:fullName];
     if (hasShown != nil) {
         NSLog(@"MANAGEDAPPS.CO -> Coach previously shown.");

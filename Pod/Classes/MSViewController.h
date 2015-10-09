@@ -18,5 +18,6 @@
 
 - (void) customInit;
 - (void) resetCoach;
+- (void) showCoachImage: (NSString*)name;
 
 @end
