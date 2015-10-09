@@ -81,11 +81,13 @@
         UIImage* coach = [UIImage imageNamed:self.styleCoaching];
         
         self.coachImageView = [[UIImageView alloc] initWithImage:coach];
+        self.coachImageView.frame = self.view.frame;
         self.coachImageView.center = self.view.center;
         self.coachImageView.alpha = 0.0;
         [UIView animateWithDuration:self.styleCoachingDelay animations:^{
             self.coachImageView.alpha = self.styleCoachingAlpha;
         }];
+
         self.coachImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapCoachGesture:)];
         tapGesture.numberOfTapsRequired = 1;
