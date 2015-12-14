@@ -187,18 +187,28 @@ static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_
     return authTok;
 }
 
-- (void)sendDeviceToken {
-    
+- (NSString*)getDeviceToken{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *authTok = [defaults objectForKey: @"authToken"];
-    NSString* deviceToken = [defaults objectForKey: @"deviceToken"];
+    NSString *deviceTok = nil;
+    if (defaults != nil) {
+        deviceTok = [defaults objectForKey: @"deviceToken"];
+    }
     
-    if (deviceToken == nil || authTok == nil) {
+    if (deviceTok == nil ) {
         if (self.delegate != nil) {
             [self.delegate deviceTokenSendStatus:NO];
         }
-        return;
     }
+    
+    return deviceTok;
+}
+
+
+- (void)sendDeviceToken {
+    
+    NSString * authTok = [self getAuthToken];
+    NSString * deviceToken = [self getDeviceToken];
+    
     NSLog(@"sending token: device %@ auth %@", deviceToken, authTok);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

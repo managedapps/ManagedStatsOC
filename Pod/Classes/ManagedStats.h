@@ -34,6 +34,7 @@
 - (void)logout;
 - (BOOL)userHasAuthToken;
 - (NSString*)getAuthToken;
+- (NSString*)getDeviceToken;
 - (void)sendDeviceToken;
 - (void)alertWithMessage:(NSString *)message;
 

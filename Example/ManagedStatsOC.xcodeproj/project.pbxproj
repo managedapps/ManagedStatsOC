@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D3EB9B61BB3120D00F1594A /* MALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3EB9B51BB3120D00F1594A /* MALoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		4D3EB9B91BB3122300F1594A /* MASignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3EB9B81BB3122300F1594A /* MASignUpViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D3EB9B61BB3120D00F1594A /* MALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3EB9B51BB3120D00F1594A /* MALoginViewController.m */; };
+		4D3EB9B91BB3122300F1594A /* MASignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3EB9B81BB3122300F1594A /* MASignUpViewController.m */; };
 		4D4286F31BAB0C0C00AFD8E8 /* MSSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4286F21BAB0C0C00AFD8E8 /* MSSettingsManager.m */; };
 		4D4286F91BAB194800AFD8E8 /* MSDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4286F81BAB194800AFD8E8 /* MSDataManager.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -558,7 +558,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManagedStatsOC/ManagedStatsOC-Prefix.pch";
 				INFOPLIST_FILE = "ManagedStatsOC/ManagedStatsOC-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -578,7 +578,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManagedStatsOC/ManagedStatsOC-Prefix.pch";
 				INFOPLIST_FILE = "ManagedStatsOC/ManagedStatsOC-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
