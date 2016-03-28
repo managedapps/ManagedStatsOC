@@ -12,5 +12,4 @@ target 'ManagedStatsOC_Tests', :exclusive => true do
   pod 'Expecta'
   pod 'FBSnapshotTestCase'
   pod 'Expecta+Snapshots'
-  pod 'AFNetworking', '~> 3.0'
 end
