@@ -14,18 +14,19 @@ static NSString *kdeviceTokenURL = @"https://epi-dev.herokuapp.com/api/v1/new_ph
 static NSString *kauthTokenURL = @"https://epi-dev.herokuapp.com/api/v1/login";
 static NSString *ksignUpURL = @"https://epi-dev.herokuapp.com/api/v1/users/new";
 static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_key=";
+static NSString *_appKey;
+static NSString *_apiKey;
 
 @implementation ManagedStats {
     
 }
 
-- (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key {
++(void) setAppKey:(NSString *)appKey setApiKey:(NSString *)apiKey {
     _appKey = appKey;
-    _apiKey = key;
-    return self;
+    _apiKey = apiKey;
 }
 
-- (void)recordRun {
+- (void)appLaunched {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *firstRun = [defaults objectForKey:@kNSUDKeyFirstRun];
@@ -52,8 +53,34 @@ static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_
         [downloadTask resume];
     } else {
         NSLog(@"MANAGEDAPPS.CO -> First Run Previously Recorded.");
+        [self sessionStart];
     }
 }
+
+- (void)sessionStart {
+    //jackye
+    
+    // waiting on startSession url
+    
+    /*
+    NSString *sessionUrl = [NSString stringWithFormat:@kFirstRunURL, _appKey, _apiKey];
+    NSURL *url = [NSURL URLWithString:sessionUrl];
+    NSURLSessionDataTask *downloadTask = [[NSURLSession sharedSession]
+                                          dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                              //Handle response here
+                                              NSLog(@"MANAGEDAPPS.CO -> result %@", response);
+                                              NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                              [defaults setObject:@"YES" forKey:@kNSUDKeyFirstRun];
+                                              [defaults synchronize];
+                                              if(error) {
+                                                  NSLog(@"\n\nError: %@", error);
+                                              }
+                                          }];
+    
+    [downloadTask resume];
+     */
+}
+
 
 - (void)storeDeviceTokenLocally:(NSData *)deviceToken {
     //jackye
