@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *apiKey;
 
-- (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key;
++(void) setAppKey:(NSString *)appKey setApiKey:(NSString *)apiKey;
 - (void)recordRun;
 - (void)storeDeviceTokenLocally:(NSData *)deviceToken;
 - (void)login:(NSString*)email password:(NSString*)pass;
