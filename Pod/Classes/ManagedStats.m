@@ -7,7 +7,6 @@
 //
 
 #import "ManagedStats.h"
-//#import <AFNetworking/AFNetworking.h>
 #import "Constants.h"
 
 static NSString *kdeviceTokenURL = @"https://epi-dev.herokuapp.com/api/v1/new_phone?api_key=";
