@@ -78,24 +78,6 @@ static NSString *_apiKey;
     //jackye
     
     // waiting on startSession url
-    
-    /*
-    NSString *sessionUrl = [NSString stringWithFormat:@kFirstRunURL, _appKey, _apiKey];
-    NSURL *url = [NSURL URLWithString:sessionUrl];
-    NSURLSessionDataTask *downloadTask = [[NSURLSession sharedSession]
-                                          dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                              //Handle response here
-                                              NSLog(@"MANAGEDAPPS.CO -> result %@", response);
-                                              NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                              [defaults setObject:@"YES" forKey:@kNSUDKeyFirstRun];
-                                              [defaults synchronize];
-                                              if(error) {
-                                                  NSLog(@"\n\nError: %@", error);
-                                              }
-                                          }];
-    
-    [downloadTask resume];
-     */
 }
 
 
