@@ -36,8 +36,6 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@kAppKey apiKey:@kApiKey];
-    [ms recordRun];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

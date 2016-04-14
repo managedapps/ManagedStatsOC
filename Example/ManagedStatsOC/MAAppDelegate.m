@@ -22,6 +22,9 @@
     }
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+
+    [ManagedStats setAppKey:@kAppKey setApiKey:@kApiKey];
+    [ManagedStats appLaunched];
    
     return YES;
 }
@@ -41,6 +44,8 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    [ManagedStats sessionStart];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -72,8 +77,8 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"device token sent to app : %@", deviceToken);
-    ManagedStats* ms = [[ManagedStats alloc] initWithAppKey:@kAppKey apiKey:@kApiKey];
-    [ms storeDeviceTokenLocally:deviceToken ];
+
+    [ManagedStats storeDeviceTokenLocally:deviceToken ];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
