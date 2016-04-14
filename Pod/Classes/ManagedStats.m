@@ -17,6 +17,7 @@ static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_
 static NSString *_appKey;
 static NSString *_apiKey;
 
+
 @implementation ManagedStats {
     
 }
@@ -26,7 +27,9 @@ static NSString *_apiKey;
     _apiKey = apiKey;
 }
 
-- (void)appLaunched {
+
+
++ (void)appLaunched {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *firstRun = [defaults objectForKey:@kNSUDKeyFirstRun];
@@ -53,11 +56,25 @@ static NSString *_apiKey;
         [downloadTask resume];
     } else {
         NSLog(@"MANAGEDAPPS.CO -> First Run Previously Recorded.");
+        //[[ManagedStats sharedInstance] sessionStart];
         [self sessionStart];
     }
 }
 
-- (void)sessionStart {
++ (ManagedStats*)sharedInstance {
+    static ManagedStats *managedStats = nil;
+    if (managedStats == nil)
+    {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            managedStats = [[ManagedStats alloc] init];
+        });
+    }
+    
+    return managedStats;
+}
+
++ (void)sessionStart {
     //jackye
     
     // waiting on startSession url
@@ -82,7 +99,7 @@ static NSString *_apiKey;
 }
 
 
-- (void)storeDeviceTokenLocally:(NSData *)deviceToken {
++ (void)storeDeviceTokenLocally:(NSData *)deviceToken {
     //jackye
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

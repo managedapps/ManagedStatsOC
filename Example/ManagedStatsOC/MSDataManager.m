@@ -7,7 +7,7 @@
 //
 
 #import "MSDataManager.h"
-#import <AFNetworking/AFNetworking.h>
+//#import <AFNetworking/AFNetworking.h>
 
 @implementation MSDataManager
 

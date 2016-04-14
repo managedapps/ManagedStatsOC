@@ -9,6 +9,6 @@
 @import UIKit;
 #import "ManagedStatsOC.h"
 
-@interface MAViewController : MSViewController <DisclaimerProtocol, ManagedStatsProtocol>
+@interface MAViewController : MSViewController <DisclaimerProtocol>
 
 @end
