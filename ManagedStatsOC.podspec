@@ -10,7 +10,6 @@ Pod::Spec.new do |s|
   s.name             = 'ManagedStatsOC'
   s.version          = '0.1.21'
   s.summary          = 'A pod for building Apps by MangagedApps.co.'
-  s.description      = '<<-DESC'
   s.homepage         = 'https://github.com/managedapps/ManagedStatsOC'
   s.license          = 'MIT'
   s.author           = { 'Bob Pascazio' => 'bob@bytefly.com' }
