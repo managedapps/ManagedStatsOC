@@ -25,9 +25,10 @@
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *apiKey;
 
-- (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key;
-- (void)recordRun;
-- (void)storeDeviceTokenLocally:(NSData *)deviceToken;
++(void) setAppKey:(NSString *)appKey setApiKey:(NSString *)apiKey;
++ (void)appLaunched;
++ (void)sessionStart;
++ (void)storeDeviceTokenLocally:(NSData *)deviceToken;
 - (void)login:(NSString*)email password:(NSString*)pass;
 - (void)signup:(NSString*)email password:(NSString*)pass firstName:(NSString*)first lastName:(NSString*)last phoneNumber:(NSString*)phone;
 - (void)post:(NSDictionary*)parameters urlString:(NSString*)url;

@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.ms = [[ManagedStats alloc] initWithAppKey:@"" apiKey:@""];
-    self.ms.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {

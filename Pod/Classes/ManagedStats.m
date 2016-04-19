@@ -7,25 +7,28 @@
 //
 
 #import "ManagedStats.h"
-//#import <AFNetworking/AFNetworking.h>
 #import "Constants.h"
 
 static NSString *kdeviceTokenURL = @"https://epi-dev.herokuapp.com/api/v1/new_phone?api_key=";
 static NSString *kauthTokenURL = @"https://epi-dev.herokuapp.com/api/v1/login";
 static NSString *ksignUpURL = @"https://epi-dev.herokuapp.com/api/v1/users/new";
 static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_key=";
+static NSString *_appKey;
+static NSString *_apiKey;
+
 
 @implementation ManagedStats {
     
 }
 
-- (id)initWithAppKey:(NSString*)appKey apiKey:(NSString*)key {
++(void) setAppKey:(NSString *)appKey setApiKey:(NSString *)apiKey {
     _appKey = appKey;
-    _apiKey = key;
-    return self;
+    _apiKey = apiKey;
 }
 
-- (void)recordRun {
+
+
++ (void)appLaunched {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *firstRun = [defaults objectForKey:@kNSUDKeyFirstRun];
@@ -52,10 +55,32 @@ static NSString *klogoutURL = @"https://epi-dev.herokuapp.com/api/v1/logout?api_
         [downloadTask resume];
     } else {
         NSLog(@"MANAGEDAPPS.CO -> First Run Previously Recorded.");
+        //[[ManagedStats sharedInstance] sessionStart];
+        [self sessionStart];
     }
 }
 
-- (void)storeDeviceTokenLocally:(NSData *)deviceToken {
++ (ManagedStats*)sharedInstance {
+    static ManagedStats *managedStats = nil;
+    if (managedStats == nil)
+    {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            managedStats = [[ManagedStats alloc] init];
+        });
+    }
+    
+    return managedStats;
+}
+
++ (void)sessionStart {
+    //jackye
+    
+    // waiting on startSession url
+}
+
+
++ (void)storeDeviceTokenLocally:(NSData *)deviceToken {
     //jackye
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

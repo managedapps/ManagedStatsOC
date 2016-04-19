@@ -7,7 +7,6 @@
 //
 
 #import "MSDataManager.h"
-#import <AFNetworking/AFNetworking.h>
 
 @implementation MSDataManager
 
@@ -24,16 +23,4 @@
     return _sharedManager;
 }
 
-
-/*
--(void)postDeviceToken:(NSData *)devToken appKey:(NSString *)appKey apiKey:(NSString *)apiKey{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"deviceToken": devToken, @"appKey": appKey, @"apiKey": apiKey};
-    [manager POST:@"http://example.com/resources.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
-*/
 @end
