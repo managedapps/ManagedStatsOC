@@ -10,9 +10,10 @@
 
 ## Installation
 
-To install it, simply add the following line to your Podfile:
+ ManagedStatsOC is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
-pod 'ManagedStatsOC', :git => 'https://github.com/managedapps/ManagedStatsOC.git'
+pod 'ManagedStatsOC', '~> 0.1'
 
 ## Usage
 
