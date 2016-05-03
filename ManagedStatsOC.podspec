@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ManagedStatsOC'
-  s.version          = '0.1.21'
+  s.version          = '0.1.22'
   s.summary          = 'A pod for building Apps by MangagedApps.co.'
   s.homepage         = 'https://github.com/managedapps/ManagedStatsOC'
   s.license          = 'MIT'

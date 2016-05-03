@@ -55,7 +55,6 @@ static NSString *_apiKey;
         [downloadTask resume];
     } else {
         NSLog(@"MANAGEDAPPS.CO -> First Run Previously Recorded.");
-        //[[ManagedStats sharedInstance] sessionStart];
         [self sessionStart];
     }
 }
@@ -76,7 +75,19 @@ static NSString *_apiKey;
 + (void)sessionStart {
     //jackye
     
-    // waiting on startSession url
+    NSString *fullUrl = [NSString stringWithFormat:@kSessionStartURL, _appKey];
+    NSLog(@"MANAGEDAPPS.CO -> sessionStart fullUrl %@", fullUrl);
+    NSURL *url = [NSURL URLWithString:fullUrl];
+    NSURLSessionDataTask *downloadTask = [[NSURLSession sharedSession]
+                                          dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                              //Handle response here
+                                              NSLog(@"MANAGEDAPPS.CO -> sessionStart result %@", response);
+                                              if(error) {
+                                                  NSLog(@"\n\nError: %@", error);
+                                              }
+                                          }];
+    
+    [downloadTask resume];
 }
 
 

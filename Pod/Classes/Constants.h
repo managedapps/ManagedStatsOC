@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define kFirstRunURL            "http://portal.managedapps.co/api/v1/apps/%@/first_run?api_key=%@"
-//#define kdeviceTokenURL            "https://epi-api.herokuapp.com/api/v1/new_phone"
-
+#define kFirstRunURL                    "http://portal.managedapps.co/api/v1/apps/%@/first_run?api_key=%@"
+#define kSessionStartURL                "http://portal.managedapps.co/api/v1/apps/%@/app_session"
 #define kNSUDKeyFirstRun                "first_run"
 #define kNSUDKeyAcceptedDisclaimer      "accepted_disclaimer"
 #define kNSUDKeyCoachMark               "coach_mark"
