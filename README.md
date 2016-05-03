@@ -10,9 +10,10 @@
 
 ## Installation
 
-To install it, simply add the following line to your Podfile:
+ ManagedStatsOC is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
-pod 'ManagedStatsOC', :git => 'https://github.com/managedapps/ManagedStatsOC.git'
+pod 'ManagedStatsOC', '~> 0.1'
 
 ## Usage
 
@@ -27,7 +28,7 @@ Search for appKey and apiKey under 'MY APPS' -> 'Information' -> 'VIEW APP KEY' 
 
 Add the following code to AppDelegate didFinishLaunchingWithOptions method,
 
- 	[ManagedStats setAppKey:"AppKey" setApiKey:"ApiKey"];
+ 	[ManagedStats setAppKey:@"AppKey" setApiKey:@"ApiKey"];
  
     [ManagedStats appLaunched];
 

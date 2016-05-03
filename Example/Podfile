@@ -1,12 +1,13 @@
-source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
 use_frameworks!
 
 target 'ManagedStatsOC_Example', :exclusive => true do
-  pod "ManagedStatsOC", :path => "../"
+  pod 'ManagedStatsOC', '~> 0.1'
 end
 
 target 'ManagedStatsOC_Tests', :exclusive => true do
-  pod "ManagedStatsOC", :path => "../"
+  pod 'ManagedStatsOC', '~> 0.1'
 
   pod 'Specta'
   pod 'Expecta'
