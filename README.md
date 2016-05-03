@@ -27,7 +27,7 @@ Search for appKey and apiKey under 'MY APPS' -> 'Information' -> 'VIEW APP KEY' 
 
 Add the following code to AppDelegate didFinishLaunchingWithOptions method,
 
- 	[ManagedStats setAppKey:"AppKey" setApiKey:"ApiKey"];
+ 	[ManagedStats setAppKey:@"AppKey" setApiKey:@"ApiKey"];
  
     [ManagedStats appLaunched];
 
