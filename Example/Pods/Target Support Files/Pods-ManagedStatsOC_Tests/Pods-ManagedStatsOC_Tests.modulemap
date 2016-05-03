@@ -1,6 +1,0 @@
-framework module Pods_ManagedStatsOC_Tests {
-  umbrella header "Pods-ManagedStatsOC_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module ManagedStatsOC {
-  umbrella header "ManagedStatsOC-umbrella.h"
-
-  export *
-  module * { export * }
-}
