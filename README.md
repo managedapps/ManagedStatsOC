@@ -17,7 +17,6 @@ pod 'ManagedStatsOC', '~> 0.1'
 
 ## Usage
 
-
 Begin by setting up an account with [ManagedApps.](http://portal.managedapps.co) 
 
 Tap on '+ New App' and enter the application name. 
@@ -26,11 +25,12 @@ Search for appKey and apiKey under 'MY APPS' -> 'Information' -> 'VIEW APP KEY' 
 
 ## Objective - C
 
+#import "ManagedStatsOC.h"
+
 Add the following code to AppDelegate didFinishLaunchingWithOptions method,
 
- 	[ManagedStats setAppKey:@"AppKey" setApiKey:@"ApiKey"];
- 
-    [ManagedStats appLaunched];
+ 	[ManagedStats setAppKey:@"PUT_APP_KEY_HERE" setApiKey:@"PUT_API_KEY_HERE"];
+   	[ManagedStats appLaunched];
 
 
 Add the following code to AppDelegate applicationWillEnterForeground method,
@@ -42,10 +42,11 @@ Add the following code to AppDelegate applicationWillEnterForeground method,
 ## Swift
 Make sure you have 'use_frameworks!' as part of your podfile documentation. 
 
+import ManagedStatsOC
 
 Add the following code to AppDelegate didFinishLaunchingWithOptions method,
 
-		ManagedStats.setAppKey("", setApiKey: "")
+	ManagedStats.setAppKey("PUT_APP_KEY_HERE", setApiKey: "PUT_API_KEY_HERE")
         ManagedStats.appLaunched()
         
         
