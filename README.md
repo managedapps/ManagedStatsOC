@@ -25,7 +25,7 @@ Search for appKey and apiKey under 'MY APPS' -> 'Information' -> 'VIEW APP KEY' 
 
 ## Objective - C
 
-	\#import "ManagedStatsOC.h"
+	#import "ManagedStatsOC.h"
 
 Add the following code to AppDelegate didFinishLaunchingWithOptions method,
 
