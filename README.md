@@ -47,12 +47,12 @@ Make sure you have 'use_frameworks!' as part of your podfile documentation.
 Add the following code to AppDelegate didFinishLaunchingWithOptions method,
 
 	ManagedStats.setAppKey("PUT_APP_KEY_HERE", setApiKey: "PUT_API_KEY_HERE")
-        ManagedStats.appLaunched()
+	ManagedStats.appLaunched()
         
         
 Add the following code to AppDelegate applicationWillEnterForeground method,
 
-	 ManagedStats.sessionStart()
+	ManagedStats.sessionStart()
         
         
 ## Author
