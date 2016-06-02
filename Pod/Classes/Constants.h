@@ -10,6 +10,7 @@
 
 #define kFirstRunURL                    "http://portal.managedapps.co/api/v1/apps/%@/first_run?api_key=%@"
 #define kSessionStartURL                "http://portal.managedapps.co/api/v1/apps/%@/app_session"
+#define kDevicesURL                     "http://portal.managedapps.co/api/v1/apps/%@/register_device"
 #define kNSUDKeyFirstRun                "first_run"
 #define kNSUDKeyAcceptedDisclaimer      "accepted_disclaimer"
 #define kNSUDKeyCoachMark               "coach_mark"

@@ -79,6 +79,7 @@
     NSLog(@"device token sent to app : %@", deviceToken);
 
     [ManagedStats storeDeviceTokenLocally:deviceToken ];
+    [ManagedStats sendDeviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

@@ -7,6 +7,7 @@
 //
 
 #import "MASignUpViewController.h"
+#import "MSSettingsManager.h"
 
 @interface MASignUpViewController ()
 
@@ -45,8 +46,8 @@
 - (void)signupStatus:(BOOL)result{
     NSLog(@"signup result");
     if (result == YES) {
-        ManagedStats* ms = [[ManagedStats alloc] init];
-       [ms sendDeviceToken];
+        //ManagedStats* ms = [[ManagedStats alloc] init];
+       [ManagedStats sendDeviceToken];
         NSLog(@"signup success");
     } else {
         NSLog(@"signup failed");

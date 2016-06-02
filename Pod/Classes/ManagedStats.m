@@ -287,7 +287,7 @@ static NSString *_apiKey;
     }
 }
 
-- (NSString*)getAuthToken {
++ (NSString*)getAuthToken {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *authTok = nil;
     if (defaults != nil) {
@@ -296,80 +296,70 @@ static NSString *_apiKey;
     return authTok;
 }
 
-- (NSString*)getDeviceToken{
++ (NSString*)getDeviceToken{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *deviceTok = nil;
     if (defaults != nil) {
         deviceTok = [defaults objectForKey: @"deviceToken"];
     }
     
-    if (deviceTok == nil ) {
-        if (self.delegate != nil) {
-            [self.delegate deviceTokenSendStatus:NO];
-        }
-    }
+//    if (deviceTok == nil ) {
+//        if (self.delegate != nil) {
+//            [self.delegate deviceTokenSendStatus:NO];
+//        }
+//    }
     
     return deviceTok;
 }
 
 
-- (void)sendDeviceToken {
++ (void)sendDeviceToken {
     
-    NSString * authTok = [self getAuthToken];
     NSString * deviceToken = [self getDeviceToken];
+    NSString * deviceTokenString = [[[[deviceToken description]
+                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
     
-    NSLog(@"sending token: device %@ auth %@", deviceToken, authTok);
-    NSDictionary *parameters = @{@"token": deviceToken};
+    NSLog(@"The generated device token string is : %@",deviceTokenString);
+    NSDictionary *parameter = @{@"token": deviceTokenString};
     
-    NSURL *url = [NSString stringWithFormat:@"%@%@", kdeviceTokenURL, authTok];
+    NSString *fullUrl = [NSString stringWithFormat:@kDevicesURL, _appKey];
+    NSURL *url = [NSURL URLWithString:fullUrl];
+    
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     
     NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject: parameters
-                                                   options:kNilOptions error:&error];
+    NSData *data = [NSJSONSerialization dataWithJSONObject: parameter options: kNilOptions error:&error];
     
     if (!error) {
         NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request
                                                                    fromData:data completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
-                                                                       if(error){
+                                                                       
+                                                                       NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+                                                                       if (!error && httpResp.statusCode == 200) {
+                                                                           
+                                                                           NSLog(@"httpResp: %@", httpResp);
+                                                                           
+                                                                           NSLog(@"JSON: %@", response);
+                                                                           NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken successful");
+                                                                           //                                                                       if (self.delegate != nil) {
+                                                                           //                                                                           [self.delegate deviceTokenSendStatus:YES];
+                                                                           //                                                                       }
+                                                                       }else{
                                                                            NSLog(@"Error: %@", error);
-                                                                           if (self.delegate != nil) {
-                                                                               [self.delegate deviceTokenSendStatus:NO];
-                                                                           }
+//                                                                           if (self.delegate != nil) {
+//                                                                               [self.delegate deviceTokenSendStatus:NO];
+//                                                                           }
                                                                        }
-                                                                       
-                                                                       NSLog(@"JSON: %@", response);
-                                                                       NSLog(@"MANAGEDAPPS.CO -> sendDeviceToken successful");
-                                                                       if (self.delegate != nil) {
-                                                                           [self.delegate deviceTokenSendStatus:YES];
-                                                                       }
-                                                                       
                                                                    }];
         [uploadTask resume];
     }
 }
-
-/*
- -(void)sendDeviceTokenToServer:(NSData *)deviceToken {
- 
- if (deviceToken != nil) {
- NSLog(@"MANAGEDAPPS.CO -> Recording a Device Token!");
- AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
- NSDictionary *parameters = @{@"token": deviceToken, @"app_key": _appKey};
- [manager POST: [NSString stringWithFormat:@"%@%@", kdeviceTokenURL, _apiKey] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
- NSLog(@"JSON: %@", responseObject);
- } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
- NSLog(@"Error: %@", error);
- }];
- } else {
- NSLog(@"MANAGEDAPPS.CO -> Device Token is nil");
- }
- }
- */
 
 -(void)alertWithMessage:(NSString *)message{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"My Alert"

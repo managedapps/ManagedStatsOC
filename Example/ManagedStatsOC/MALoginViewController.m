@@ -7,6 +7,7 @@
 //
 
 #import "MALoginViewController.h"
+#import "MSSettingsManager.h"
 
 @interface MALoginViewController ()
 
@@ -37,7 +38,7 @@
 - (void)loginStatus:(BOOL)result{
     NSLog(@"login result");
     if (result == YES) {
-        [self.ms sendDeviceToken];
+        [ManagedStats sendDeviceToken];
         NSLog(@"login success");
     } else {
         NSLog(@"login failed");
