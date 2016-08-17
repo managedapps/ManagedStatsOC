@@ -9,6 +9,8 @@
 #import "MAAppDelegate.h"
 #import "MSSettingsManager.h"
 #import "Constants.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation MAAppDelegate
 
@@ -25,7 +27,7 @@
 
     [ManagedStats setAppKey:@kAppKey setApiKey:@kApiKey];
     [ManagedStats appLaunched];
-   
+    [Fabric with:@[[Crashlytics class]]];
     return YES;
 }
 
