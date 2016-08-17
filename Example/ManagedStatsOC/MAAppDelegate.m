@@ -9,6 +9,8 @@
 #import "MAAppDelegate.h"
 #import "MSSettingsManager.h"
 #import "Constants.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation MAAppDelegate
 
@@ -25,7 +27,7 @@
 
     [ManagedStats setAppKey:@kAppKey setApiKey:@kApiKey];
     [ManagedStats appLaunched];
-   
+    [Fabric with:@[[Crashlytics class]]];
     return YES;
 }
 
@@ -79,6 +81,7 @@
     NSLog(@"device token sent to app : %@", deviceToken);
 
     [ManagedStats storeDeviceTokenLocally:deviceToken ];
+    [ManagedStats sendDeviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

@@ -34,9 +34,9 @@
 - (void)post:(NSDictionary*)parameters urlString:(NSString*)url;
 - (void)logout;
 - (BOOL)userHasAuthToken;
-- (NSString*)getAuthToken;
-- (NSString*)getDeviceToken;
-- (void)sendDeviceToken;
++ (NSString*)getAuthToken;
++ (NSString*)getDeviceToken;
++ (void)sendDeviceToken;
 - (void)alertWithMessage:(NSString *)message;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "MAViewController.h"
 #import "Constants.h"
+#import "MSSettingsManager.h"
 
 @interface MAViewController ()
 
@@ -118,8 +119,8 @@
 - (IBAction)sendAlert:(id)sender
 {
     ManagedStats* ms = [[ManagedStats alloc] init];
-    ms.delegate = self;
-    NSString* authToken = [ms getAuthToken];
+//    ms.delegate = self;
+    NSString* authToken = [ManagedStats getAuthToken];
     NSLog(@"auth token is %@\n", authToken);
     
     NSString* url = [NSString stringWithFormat:@"https://epi-dev.herokuapp.com/api/v1/emergency?api_key=%@", authToken];
